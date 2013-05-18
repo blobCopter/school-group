@@ -1,0 +1,20 @@
+<h1><%= @topic.topicOwner %></h1>
+<h1><%= @topic.topicName %></h1>
+<h2><%= @topic.description %></h2>
+<hr/>
+
+<% @groups.each do |group| %>
+  <h1><%= group.name %></h1>
+  <h2>Team Members:</h2>
+  <% group.users.each do |user| %>
+    <h2><%= user.name %></h2>
+  <% end %>
+  <hr/>
+<% end %>
+
+<h2>List of users:</h2>
+<% @list.users.each do |user| %>
+<h3><%= user.name %></h3>
+<% end %>
+<hr/>
+

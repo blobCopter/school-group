@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  topicOwner: MyString
+  topicName: MyString
+  nbPeoplePerGroup: 
+  description: MyString
+
+two:
+  topicOwner: MyString
+  topicName: MyString
+  nbPeoplePerGroup: 
+  description: MyString

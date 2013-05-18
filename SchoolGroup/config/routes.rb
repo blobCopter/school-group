@@ -2,6 +2,13 @@ SchoolGroup::Application.routes.draw do
   get "home/index"
 
   devise_for :users
+
+  resources :users do
+    get 'topic', :on => :collection
+  end
+  
+  match "/users/:topic/:id" => "users#topic", :as => 'topic', :via => [:post, :get]
+
   root :to => "home#index"
 
   # The priority is based upon order of creation:
