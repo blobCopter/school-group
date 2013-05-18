@@ -1,0 +1,11 @@
+body
+{
+    background-color : #ecf0f1;
+}
+
+.body_section
+{
+    background-color : rgb(236, 240, 241);
+    box-shadow : 0 1px 1px black;
+    width : 100%;
+}

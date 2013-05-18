@@ -1,4 +1,102 @@
-<h1><%= @topic.topicOwner %></h1>
+
+
+    	<h2>
+	     <!-- @BACKEND TITLE HERE -->
+	     School group project
+	   </h2>
+	   <div>
+	   	 <!-- @BACKEND DESCRIPTION HERE -->
+	       The goal of this project is to develop an application allowing students to
+	       create workgroups and work together efficiently.
+	   </div>
+	   <div class="label label-warning">
+
+	       Created by : Patrick laoshi
+	   </div>
+ </header> <!-- ferme la balise <header > ouverte dans le layout application.html.erb -->
+</div>
+
+<div id="content_body">
+	    <div class="row-fluid">
+	      <div class="span9" id="topic_group_list" >
+		<!--
+		    
+		    GROUP LIST
+		    
+		  -->
+
+		<!-- this is one element -->
+			<div class="group_item group_item_open" completion="30">
+				<h3 style="display:inline; margin-left: 20px;"> Team name </h3>
+				<span class="badge badge-inverse">5</span>
+				<div class="graph_container">
+				</div>
+			</div>
+
+			<!-- this is another one -->
+			<div class="group_item group_item_used" completion="30">
+			  <h3 style="display:inline; margin-left: 20px;"> Team name </h3>
+			    <span class="badge badge-inverse">5</span>
+			    <div class="graph_container">
+				</div>
+			</div>
+
+			<!-- this is another one -->
+			<div class="group_item group_item_closed" completion="30">
+			  <h3 style="display:inline; margin-left: 20px;"> Team name</h3>
+			    <span class="badge badge-inverse">5</span>
+			    <div class="graph_container">
+				</div>
+			</div>
+
+			<div class="group_item group_item_open" completion="43">
+			  <h3 style="display:inline; margin-left: 20px;"> Team name </h3>
+			    <span class="badge badge-inverse">5</span>
+			    <div class="graph_container">
+				</div>
+			</div>
+
+			<!-- this is another one -->
+			<div class="group_item group_item_used" completion="54">
+			  <h3 style="display:inline; margin-left: 20px;"> Team name </h3>
+			    <span class="badge badge-inverse">5</span>
+			    <div class="graph_container">
+				</div>
+			</div>
+
+
+				
+
+
+	      </div>
+	      <div class="span3" id="topic_user_list" >
+		
+			<%= image_tag("tmp_photo.png", :class => "img-polaroid") %>
+			<%= image_tag("tmp_photo.png", :class => "img-polaroid") %>
+			<%= image_tag("tmp_photo.png", :class => "img-polaroid") %>
+			<%= image_tag("tmp_photo.png", :class => "img-polaroid") %>
+			<%= image_tag("tmp_photo.png", :class => "img-polaroid") %>
+			<%= image_tag("tmp_photo.png", :class => "img-polaroid") %>
+			<%= image_tag("tmp_photo.png", :class => "img-polaroid") %>
+			<%= image_tag("tmp_photo.png", :class => "img-polaroid") %>
+
+	      	
+
+
+		<!--
+		    
+		    USER LIST
+		
+		  -->
+
+
+
+	      </div>
+	    </div>
+	</div>
+
+
+<!-- <h1><%= @topic.topicOwner %></h1>
 <h1><%= @topic.topicName %></h1>
 <h2><%= @topic.description %></h2>
 <hr/>
@@ -17,4 +115,50 @@
 <h3><%= user.name %></h3>
 <% end %>
 <hr/>
+ -->
 
+<script type="text/javascript">
+
+    	function generate_pie_charts()
+    	{
+    		var teams = document.getElementsByClassName("group_item");
+
+    		for (var i=0; i < teams.length; i++)
+    		{
+    			var completion = parseInt(teams[i].getAttribute("completion"));
+    			var container = teams[i].getElementsByClassName('graph_container')[0];
+    			var canvas = container.getElementsByTagName('canvas')[0];
+    			if (!canvas)
+    				canvas = document.createElement('canvas');
+
+    			canvas.setAttribute('id','graph_container_canvas_' + i);
+    			console.log(container.offsetHeight);
+    			
+				  canvas.width  = container.offsetWidth;
+				  canvas.height = canvas.width / 2;
+    			var ctx = canvas.getContext("2d");
+    			new Chart(ctx).Pie([
+							{
+								value: completion,
+								color:"#F38630"
+							},
+							{
+								value : 100 - completion,
+								color : "#E0E4CC"
+							}], null);
+
+    			container.appendChild(canvas);
+    		}
+    	}
+
+    	window.onload = function()
+    	{
+    		generate_pie_charts();
+    	};
+
+    	$(window).resize(function()
+    	{
+  			generate_pie_charts();
+		});
+
+    </script>
