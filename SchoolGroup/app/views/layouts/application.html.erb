@@ -9,6 +9,7 @@
 <body>
 	<div  class="well" id="header_content">
 	<header>
+	<%=  image_tag("LOGO2-2.png", :width => 240 , :height => 240, :style => "float:left; margin-right : 15px;") %>
 	  <% if user_signed_in? %>
 	  	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
 	  <% else %>
