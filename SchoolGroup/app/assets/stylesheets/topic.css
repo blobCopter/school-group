@@ -1,5 +1,54 @@
-.topic_title
+@font-face
 {
+    font-family:  'sansita-one';
+    src:url('font/SansitaOne-webfont.eot') format('eot'),
+    src:url('font/SansitaOne-webfont.woff') format('woff'),
+    src:url('font/SansitaOne-webfont.ttf') format('truetype'),
+    src:url('font/SansitaOne-webfont.svg') format('svg');
+}
+
+
+
+div h2
+{
+    color:whitesmoke;
+    font-family: 'sansita-one';
+    text-shadow:2px 2px 2px rgba(0,0,0,0.4);
+    font-size: 3em;
+}
+
+#topic-description
+{
+    color:whitesmoke;
+    font-family: 'sansita-one';
+    text-shadow:2px, 2px, 2px rgba(0,0,0,0.4);
+    font-size: 2em;
+    margin-left: 50px;
+    margin-bottom:20px;
+}
+
+a{ color:whitesmoke; }
+
+h3#title
+{
+    font-family:'sansita-one';
+    z-index:1;
+    position: relative;
+    left: 2%;
+    top: -14px;
+    background-color: #E67E22;
+    color:whitesmoke;
+    padding: 10px;
+    text-align: center;
+    text-shadow:1px 1px 1px rgba(0,0,0,0.15);
+    box-shadow:3px 3px 3px rgba(0,0,0,0.3);
+}
+
+#topic-owner
+{
+    font-family:'sansita-one';
+    font-size: 1.4em;
+    padding:1%;
 }
 
 .group_item
@@ -60,11 +109,22 @@
 
 h3
 {
-    color: rgb(211, 84, 0);
+   // color: rgb(211, 84, 0);
 }
 
 #content_body
 {
    margin-left: 15%;
     margin-right: 15%;
+}
+
+.stitched 
+{
+    padding:12px;
+   font-weight: bold;
+   line-height: 1.3em;
+   border: 2px dashed #fff;
+   border-radius: 10px;
+   box-shadow: 2px 1px 6px 4px rgba(10, 10, 0, 0.5);
+   text-shadow: -1px -1px rgba(0,0,0,0.3);
 }

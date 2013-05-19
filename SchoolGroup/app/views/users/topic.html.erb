@@ -1,71 +1,39 @@
 
-
-    	<h2>
-	     <!-- @BACKEND TITLE HERE -->
-	     School group project
-	   </h2>
-	   <div>
-	   	 <!-- @BACKEND DESCRIPTION HERE -->
-	       The goal of this project is to develop an application allowing students to
-	       create workgroups and work together efficiently.
-	   </div>
-	   <div class="label label-warning">
-
-	       Created by : Patrick laoshi
-	   </div>
+		<div id='info-topic'>
+	    	<h2>
+		     <!-- @BACKEND TITLE HERE -->
+		     <%= @topic.topicName %>
+		   </h2>
+		   <div id='topic-description'>
+		   	 <!-- @BACKEND DESCRIPTION HERE -->
+		      <%= @topic.description %>
+		   </div>
+		   <div class="label label-warning " id='topic-owner'>
+		       <b>Created by : <%= @topic.topicOwner %></b>
+		   </div>
+		</div>
  </header> <!-- ferme la balise <header > ouverte dans le layout application.html.erb -->
 </div>
 
 <div id="content_body">
 	    <div class="row-fluid">
 	      <div class="span9" id="topic_group_list" >
-		<!--
+			<!--
 		    
-		    GROUP LIST
+		    	GROUP LIST
 		    
-		  -->
+		  	-->
 
-		<!-- this is one element -->
-			<div class="group_item group_item_open" completion="30">
-				<h3 style="display:inline; margin-left: 20px;"> Team name </h3>
-				<span class="badge badge-inverse">5</span>
-				<div class="graph_container">
+		  	<% @groups.each do |group| %>
+			  	<div class="group_item group_item_open" completion="30">
+					<h3 id="title" style="display:inline; margin-left: 20px;"> <%= link_to group.name, "#{@topic.id}/group/#{group.id}" %> </h3>
+					<div class="graph_container">
+					</div>
+					<span class="badge badge-inverse"><%= group.users.count %></span>
 				</div>
-			</div>
+			<% end %>
 
-			<!-- this is another one -->
-			<div class="group_item group_item_used" completion="30">
-			  <h3 style="display:inline; margin-left: 20px;"> Team name </h3>
-			    <span class="badge badge-inverse">5</span>
-			    <div class="graph_container">
-				</div>
-			</div>
-
-			<!-- this is another one -->
-			<div class="group_item group_item_closed" completion="30">
-			  <h3 style="display:inline; margin-left: 20px;"> Team name</h3>
-			    <span class="badge badge-inverse">5</span>
-			    <div class="graph_container">
-				</div>
-			</div>
-
-			<div class="group_item group_item_open" completion="43">
-			  <h3 style="display:inline; margin-left: 20px;"> Team name </h3>
-			    <span class="badge badge-inverse">5</span>
-			    <div class="graph_container">
-				</div>
-			</div>
-
-			<!-- this is another one -->
-			<div class="group_item group_item_used" completion="54">
-			  <h3 style="display:inline; margin-left: 20px;"> Team name </h3>
-			    <span class="badge badge-inverse">5</span>
-			    <div class="graph_container">
-				</div>
-			</div>
-
-
-				
+	
 
 
 	      </div>

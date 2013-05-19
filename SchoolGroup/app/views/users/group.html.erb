@@ -1,0 +1,59 @@
+</header>
+</div>
+<div id="content_body">
+  <div class="row-fluid">
+    <div class="span9">
+      <div id="task_list">
+	<div class="navbar-inner"><center>Group Progress bar</center>
+	  <div class="progress progress-striped active">
+	    <div id="current-state"class="bar" ></div>
+	</div></div><h4>Tasks : </h4>
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th>Id</th>
+	      <th>Task name</th>
+	      <th>Owner</th>
+	      <th>Status</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @tasks.each do |task| %>
+	    <tr tag-task="<%= task.user_id %>">
+	      <td><%= task.id %></td>
+	      <td><%= task.name %></td>
+	      <td><%= User.find(task.user_id).name %></td>
+
+	      <td><input type="checkbox" task_id="<%= task.id %>" <%= task.status == '1' ? 'checked' : '' %>></td>
+	    </tr>
+	    <% end %>
+	  </tbody>
+	</table>
+	<div class="alert alert-success" >Success : Information sent to the server.</div>
+	<div class="alert alert-error" >Error : Incorrect data type.</div>
+      </div>
+      <div id="comments">
+        <div class="navbar-inner"><h4>Comments</h4></div>
+        <div class="media">
+          <a class="pull-left" href="#">
+	    <%= image_tag('darsel_j64.jpg', :class => "media-object", :size => "64x64", :tag => 1) %>
+          </a>
+          <div class="media-body">
+            <h4 class="media-heading">Julien Darsel</h4>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span2" id="team_user_list" >
+      <div id="team-pictures" class="sidebar-nav">
+	<% @users.each do |user| %>
+	<%= image_tag('avatar.png', :class => "img-polaroid", :tag => user.id, :alt => user.name) %>
+	<p><%= user.name %></p>
+	<% end %>
+      </div>
+    </div>
+    
+  </div>
+</div>
+

@@ -5,10 +5,13 @@ SchoolGroup::Application.routes.draw do
 
   resources :users do
     get 'topic', :on => :collection
+    get 'group', :on => :collection
+    get 'toggle_status', :on => :collection
   end
   
   match "/users/:topic/:id" => "users#topic", :as => 'topic', :via => [:post, :get]
-
+  match "/users/:topic/:id/:group/:id" => "users#group", :as => 'group', :via => [:post, :get]
+  match "/users/:topic/:id/:group/:id/:toggle_status" => "users#toggle_status", :as => 'toggle_status', :via => [:post, :get]
   root :to => "home#index"
 
   # The priority is based upon order of creation:
