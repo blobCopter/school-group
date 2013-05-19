@@ -1,3 +1,21 @@
+<div id='info-topic'>
+	<h2>
+     <!-- @BACKEND TITLE HERE -->
+     <%= @topic.topicName %>
+   </h2>
+   <div id='topic-description'>
+   	 <!-- @BACKEND DESCRIPTION HERE -->
+      <%= @topic.description %>
+   </div>
+   <div class="label label-warning " id='topic-owner'>
+       <b>Created by : <%= @topic.topicOwner %></b>
+   </div>
+	<div class="group_item" style="float:right;">
+		<h3 id="title" style="display:inline; margin-left: 20px;"> <%= @group.name %> </h3>
+		<div id="group_pie_chart" completion="30">
+		</div>
+	</div>
+</div>
 </header>
 </div>
 <div id="content_body">
@@ -24,7 +42,9 @@
 	      <td><%= task.name %></td>
 	      <td><%= User.find(task.user_id).name %></td>
 
-	      <td><input type="checkbox" task_id="<%= task.id %>" <%= task.status == '1' ? 'checked' : '' %>></td>
+	      <td>
+	      	<input type="checkbox" class="icheckbox_flat-green" task_id="<%= task.id %>" <%= task.status == '1' ? 'checked' : '' %>>
+	      </td>
 	    </tr>
 	    <% end %>
 	  </tbody>
@@ -34,15 +54,33 @@
       </div>
       <div id="comments">
         <div class="navbar-inner"><h4>Comments</h4></div>
+
+        <!-- COMMENT ONE -->
         <div class="media">
           <a class="pull-left" href="#">
 	    <%= image_tag('darsel_j64.jpg', :class => "media-object", :size => "64x64", :tag => 1) %>
           </a>
-          <div class="media-body">
-            <h4 class="media-heading">Julien Darsel</h4>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          <div class="media-body comment">
+            <h4 class="media-heading label label-important">Julien Darsel</h4><br/>
+            Good progress, carry on.
           </div>
+          <div class="time"> 2012-05-19 10:32:51 </div>
         </div>
+
+        <hr/>
+
+        <!-- COMMENT TWO -->
+        <div class="media">
+          <a class="pull-left" href="#">
+	    <%= image_tag('darsel_j64.jpg', :class => "media-object", :size => "64x64", :tag => 1) %>
+          </a>
+          <div class="media-body comment">
+            <h4 class="media-heading label label-important">Julien Darsel</h4><br/>
+            The db conception should be made before the auth process.
+          </div>
+          <div class="time"> 2012-05-18 19:54:03 </div>
+        </div>
+
       </div>
     </div>
     <div class="span2" id="team_user_list" >
@@ -57,3 +95,49 @@
   </div>
 </div>
 
+<div>
+</div>
+
+<script type="text/javascript">
+
+	function generate_pie_charts()
+	{
+		var container = document.getElementById("group_pie_chart");
+		var completion = parseInt(container.getAttribute("completion"));
+		var canvas = container.getElementsByTagName('canvas')[0];
+		if (!canvas)
+		{
+			canvas = document.createElement('canvas');
+			container.appendChild(canvas);
+		}
+		
+		canvas.width  = container.offsetWidth;
+		canvas.height = canvas.width / 2;
+		var ctx = canvas.getContext("2d");
+		new Chart(ctx).Pie([
+					{
+						value: completion,
+						color:"#F38630"
+					},
+					{
+						value : 100 - completion,
+						color : "#E0E4CC"
+					}], null);
+
+	}
+
+	window.onload = function()
+	{
+		generate_pie_charts();
+		$('input').iCheck({
+    		checkboxClass: 'icheckbox_flat-green'
+    		//radioClass: 'iradio_flat-green'
+ 		 });
+	};
+
+	$(window).resize(function()
+	{
+			generate_pie_charts();
+	});
+
+</script>

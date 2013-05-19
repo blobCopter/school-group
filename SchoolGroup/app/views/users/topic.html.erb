@@ -24,12 +24,13 @@
 		    
 		  	-->
 
-		  	<% @groups.each do |group| %>
-			  	<div class="group_item group_item_open" completion="30">
-					<h3 id="title" style="display:inline; margin-left: 20px;"> <%= link_to group.name, "#{@topic.id}/group/#{group.id}" %> </h3>
+		  	<% @groups.each_index do |index| %>
+
+			  	<div class="papers group_item group_item_open" completion="<%= @completions[index] %>">
+					<h3 id="title" style="display:inline; margin-left: 20px;"> <%= link_to @groups[index].name, "#{@topic.id}/group/#{@groups[index].id}" %> </h3>
 					<div class="graph_container">
 					</div>
-					<span class="badge badge-inverse"><%= group.users.count %></span>
+					<span class="badge badge-inverse"><%= @groups[index].users.count %></span>
 				</div>
 			<% end %>
 
