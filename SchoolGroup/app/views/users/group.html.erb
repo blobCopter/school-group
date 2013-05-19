@@ -8,7 +8,7 @@
       <%= @topic.description %>
    </div>
    <div class="label label-warning " id='topic-owner'>
-       <b>Created by : <%= @topic.topicOwner %></b>
+       <b>Created by : <!--<%= @topic.topicOwner %>--> Frank Nazikian</b>
    </div>
 	<div class="group_item" style="float:right;">
 		<h3 id="title" style="display:inline; margin-left: 20px;"> <%= @group.name %> </h3>
@@ -22,10 +22,11 @@
   <div class="row-fluid">
     <div class="span9">
       <div id="task_list">
-	<div class="navbar-inner"><center>Group Progress bar</center>
+	<h4>Tasks : </h4>
+	<center>Group Progress</center>
 	  <div class="progress progress-striped active">
 	    <div id="current-state"class="bar" ></div>
-	</div></div><h4>Tasks : </h4>
+	</div>
 	<table class="table">
 	  <thead>
 	    <tr>
@@ -49,19 +50,17 @@
 	    <% end %>
 	  </tbody>
 	</table>
-	<div class="alert alert-success" >Success : Information sent to the server.</div>
-	<div class="alert alert-error" >Error : Incorrect data type.</div>
       </div>
       <div id="comments">
-        <div class="navbar-inner" style="margin-left = 0px; margin-right : 0px;"><h4>Comments</h4></div>
+        <h4 >Comments</h4>
 
         <!-- COMMENT ONE -->
         <div class="media">
           <a class="pull-left" href="#">
-	    <%= image_tag('darsel_j64.jpg', :class => "media-object", :size => "64x64", :tag => 1) %>
+	    <%= image_tag('fn.png', :class => "media-object", :size => "64x64", :tag => 1) %>
           </a>
           <div class="media-body comment">
-            <h4 class="media-heading label label-important">Julien Darsel</h4><br/>
+            <h4 class="media-heading label label-important">Frank Nazikian</h4><br/>
             Good progress, carry on.
           </div>
           <div class="time"> 2012-05-19 10:32:51 </div>
@@ -72,10 +71,10 @@
         <!-- COMMENT TWO -->
         <div class="media">
           <a class="pull-left" href="#">
-	    <%= image_tag('darsel_j64.jpg', :class => "media-object", :size => "64x64", :tag => 1) %>
+	    <%= image_tag('fn.png', :class => "media-object", :size => "64x64", :tag => 1) %>
           </a>
           <div class="media-body comment">
-            <h4 class="media-heading label label-important">Julien Darsel</h4><br/>
+            <h4 class="media-heading label label-important">Frank Nazikian</h4><br/>
             The db conception should be made before the auth process.
           </div>
           <div class="time"> 2012-05-18 19:54:03 </div>
