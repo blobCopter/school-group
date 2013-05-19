@@ -21,36 +21,40 @@
 <div id="content_body">
   <div class="row-fluid">
     <div class="span9">
-      <div id="task_list">
-	<h4>Tasks : </h4>
-	<center>Group Progress</center>
-	  <div class="progress progress-striped active">
-	    <div id="current-state"class="bar" ></div>
-	</div>
-	<table class="table">
-	  <thead>
-	    <tr>
-	      <th>No</th>
-	      <th>Task name</th>
-	      <th>Owner</th>
-	      <th>Status</th>
-	    </tr>
-	  </thead>
-	  <tbody>
-	    <% @tasks.each do |task| %>
-	    <tr tag-task="<%= task.user_id %>">
-	      <td><%= task.id %></td>
-	      <td><%= task.name %></td>
-	      <td><%= User.find(task.user_id).name %></td>
+	    	<div id="tasks">
+		      <div id="task_list">
+			<h4>Tasks : </h4>
+			 <!--  <div class="progress progress-striped active">
+			    <div id="current-state"class="bar" >dsad</div>
+			</div> -->
+			<div class="progress progress-warning">
+  			<div id="current-state"class="bar" style="width: 0%"><bold><center style='color: white;'>Group Progress</center></bold></div>
+			</div>
+			<table class="table">
+			  <thead>
+			    <tr>
+			      <th>No</th>
+			      <th>Task name</th>
+			      <th>Owner</th>
+			      <th>Status</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			    <% @tasks.each do |task| %>
+			    <tr tag-task="<%= task.user_id %>">
+			      <td><%= task.id %></td>
+			      <td><%= task.name %></td>
+			      <td><%= User.find(task.user_id).name %></td>
 
-	      <td>
-	      	<input type="checkbox" class="icheckbox_flat-green" task_id="<%= task.id %>" <%= task.status == '1' ? 'checked' : '' %>>
-	      </td>
-	    </tr>
-	    <% end %>
-	  </tbody>
-	</table>
-      </div>
+			      <td>
+			      	<input type="checkbox" class="icheckbox_flat-green" task_id="<%= task.id %>" <%= task.status == '1' ? 'checked' : '' %>>
+			      </td>
+			    </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+		      </div>
+	    </div>
       <div id="comments">
         <h4 >Comments</h4>
 
