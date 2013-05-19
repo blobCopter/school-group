@@ -19,7 +19,10 @@
 	    var isChecked = $(this).prop("checked")  ? 1 : 0;
 
 	    var current_state = ($( "tr input:checked" ).length / $('tr input[type=checkbox]').length) * 100;
-	    $('#current-state').width(current_state + "%");
+	    //$('#current-state').width(current_state + "%");
+
+	    document.getElementById('group_pie_chart').setAttribute('completion', current_state);
+	    generate_pie_charts();
 
 	    $.ajax({
 		
@@ -49,7 +52,11 @@
 	    var isChecked = $(this).prop("checked")  ? 1 : 0;
 
 	    var current_state = ($( "tr input:checked" ).length / $('tr input[type=checkbox]').length) * 100;
-	    $('#current-state').width(current_state + "%");
+
+	    document.getElementById('group_pie_chart').setAttribute('completion', current_state);
+	    generate_pie_charts();
+
+	    //$('#current-state').width(current_state + "%");
 	    
 	    $.ajax({
 		
