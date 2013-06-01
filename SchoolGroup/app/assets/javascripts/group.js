@@ -6,10 +6,10 @@
 
 
 
-	    $('img').mouseenter(function (e) {
+	    $('#team_user_list img').mouseenter(function (e) {
 			applyColorOnTask(this);
 	    });
-	   	$('img').mouseleave(function (e) {
+	   	$('#team_user_list img').mouseleave(function (e) {
 	   		removeColorOnTask(this);
 	    });
 
@@ -50,33 +50,21 @@
 		$('tr input[type=checkbox]').on('ifUnchecked', function(event){
 	    var task_id = $(this).attr("task_id");
 	    var isChecked = $(this).prop("checked")  ? 1 : 0;
-
 	    var current_state = ($( "tr input:checked" ).length / $('tr input[type=checkbox]').length) * 100;
 
 	    document.getElementById('group_pie_chart').setAttribute('completion', current_state);
 	    generate_pie_charts();
 
-	    //$('#current-state').width(current_state + "%");
-	    
 	    $.ajax({
 		
 			type: "POST",
-			
 			url: "http://localhost:3000/users/topics/1/group/1/toggle_status.json",
-
 			dataType: 'text',
-			
 			data: {task_id: task_id, status: isChecked},
-			
 			success: function(data) {
-			  //   	<div class="alert alert-success" style="display:none;"></div>
-					// <div class="alert alert-error" style="display:none;"></div>
 			},
 			
 			error: function(data) {
-			    
-			    console.log(data);
-			    
 			}
 	    });
 	});
